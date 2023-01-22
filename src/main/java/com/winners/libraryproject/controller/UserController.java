@@ -143,4 +143,9 @@ public class UserController {
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
+    @GetMapping("/")
+    public ResponseEntity<String> hello(){
+        String hi="Merhaba Library projesine Hos geldiniz";
+        return new ResponseEntity<>(hi,HttpStatus.OK);
+    }
 }

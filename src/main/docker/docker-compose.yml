@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+  app:
+    image: 'libraryproject:latest'
+    build:
+      context: .
+    container_name: app
+    ports:
+      - "8081:8081"
+    depends_on:
+      - postgresdb
+    restart: always
+    networks:
+      - webnet
+
+  postgresdb:
+    image: postgres:latest
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DATABASE: library
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+    networks:
+      - webnet
+
+networks:
+  webnet:
+    driver: bridge
+
+
